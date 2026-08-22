@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Técnicas de Investigación</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -124,7 +122,7 @@
             top: 50%;
             transform: translateY(-50%);
             width: 180px;
-            opacity: 0.12; /* Ajusta la opacidad si deseas que sea más o menos tenue */
+            opacity: 0.12;
             pointer-events: none;
             z-index: 1;
             filter: grayscale(100%);
@@ -146,7 +144,7 @@
             height: 100%;
         }
 
-        /* Mensaje de documento en proceso */
+        /* Mensaje de documento en proceso o cargando */
         .doc-error-notice {
             display: none;
             position: absolute;
@@ -155,7 +153,7 @@
             width: 100%;
             height: 100%;
             z-index: 3;
-            background: rgba(248, 249, 250, 0.92);
+            background: rgba(248, 249, 250, 0.95);
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -172,20 +170,17 @@
 </head>
 <body>
 
-    <!-- NAVBAR INSTITUCIONAL -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-brand-style shadow-sm py-2">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
-                <img src="logo.jpeg" alt="Logo" width="42" height="42" class="d-inline-block me-2 rounded bg-white p-1" onerror="this.src='https://via.placeholder.com/42?text=⚛️'">
+                <img src="logo.jpeg" alt="Logo" width="42" height="42" class="d-inline-block me-2 rounded bg-white p-1" onerror="this.src='logo.png'">
                 <span>Portal de Técnicas de Investigación</span>
             </a>
         </div>
     </nav>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <div class="container my-4">
         
-        <!-- BANNER + BUSCADOR -->
         <div class="hero-banner mb-4 shadow-sm">
             <div class="row align-items-center">
                 <div class="col-md-7">
@@ -201,10 +196,8 @@
             </div>
         </div>
 
-        <!-- GRILLA DE LAS 11 TÉCNICAS -->
         <div class="row g-4" id="modulesContainer">
             
-            <!-- TÉCNICA 1 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -239,7 +232,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 2 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -266,7 +258,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 3 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -293,7 +284,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 4 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -320,7 +310,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 5 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -355,7 +344,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 6 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -374,7 +362,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 7 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -401,7 +388,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 8 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -428,7 +414,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 9 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -455,7 +440,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 10 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -486,7 +470,6 @@
                 </div>
             </div>
 
-            <!-- TÉCNICA 11 -->
             <div class="col-12 col-md-6 col-lg-4 module-item">
                 <div class="card module-card p-3 h-100">
                     <div class="d-flex align-items-center mb-3">
@@ -516,7 +499,6 @@
         </div>
     </div>
 
-    <!-- VENTANA MODAL CON LOGOS LATERALES TENUES Y DETECCIÓN "EN PROCESO" -->
     <div class="modal fade" id="modalDoc" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
@@ -526,20 +508,22 @@
                 </div>
                 
                 <div class="modal-body p-0 modal-body-wrapper">
-                    <!-- Logos tenues flotando detrás del contenido -->
-                    <img src="logo.png" alt="Logo de fondo" class="watermark-logo watermark-left" onerror="this.src='https://via.placeholder.com/150?text=ESFM'">
-                    <img src="logo.png" alt="Logo de fondo" class="watermark-logo watermark-right" onerror="this.src='https://via.placeholder.com/150?text=ESFM'">
+                    <img src="logo.jpeg" alt="Logo de fondo" class="watermark-logo watermark-left" onerror="this.src='logo.png'">
+                    <img src="logo.jpeg" alt="Logo de fondo" class="watermark-logo watermark-right" onerror="this.src='logo.png'">
 
-                    <!-- Iframe contenedor -->
                     <div class="modal-iframe-container">
                         <iframe id="docIframe" src="" width="100%" height="100%" frameborder="0"></iframe>
                     </div>
 
-                    <!-- Mensaje en caso de que el archivo esté en proceso/no se encuentre -->
                     <div class="doc-error-notice" id="docNotice">
                         <i class="fa-solid fa-clock-rotate-left spinner-icon"></i>
                         <h4 class="fw-bold text-dark mb-2">Documento en Proceso</h4>
-                        <p class="text-muted mb-0 max-w-md">Los instrumentos se actualizarán dentro de 12 horas.</p>
+                        <p class="text-muted mb-0">Los instrumentos se actualizarán dentro de 12 horas.</p>
+                    </div>
+
+                    <div class="doc-error-notice" id="docLoading" style="display: flex;">
+                        <i class="fa-solid fa-circle-notch fa-spin spinner-icon"></i>
+                        <h5 class="fw-bold text-dark">Comprobando documento...</h5>
                     </div>
                 </div>
 
@@ -556,79 +540,68 @@
         </div>
     </div>
 
-    <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- LÓGICA DE DETECCIÓN Y MODAL -->
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const modalDoc = document.getElementById('modalDoc');
-        const iframe = document.getElementById('docIframe');
-        const notice = document.getElementById('docNotice');
-        const downloadBtn = document.getElementById('downloadBtn');
+        document.addEventListener('DOMContentLoaded', () => {
+            const modalDoc = document.getElementById('modalDoc');
+            const iframe = document.getElementById('docIframe');
+            const notice = document.getElementById('docNotice');
+            const loading = document.getElementById('docLoading');
+            const downloadBtn = document.getElementById('downloadBtn');
 
-        if (modalDoc) {
             modalDoc.addEventListener('show.bs.modal', function(event) {
                 const button = event.relatedTarget;
                 const title = button.getAttribute('data-title');
                 const file = button.getAttribute('data-file');
 
-                // 1. Limpiar estado anterior
-                notice.style.display = 'none';
-                iframe.style.display = 'none';
-                iframe.src = '';
-
-                // 2. Actualizar Título y botón de descarga
                 document.getElementById('modalTitle').textContent = `📄 ${title}`;
                 downloadBtn.setAttribute('href', file);
-                downloadBtn.setAttribute('download', file.split('/').pop());
+                
+                // Reiniciar estado visual del modal
+                iframe.style.display = 'none';
+                notice.style.display = 'none';
+                loading.style.display = 'flex';
+                iframe.src = '';
 
-                // 3. Lógica de visualización
-                // Verificamos si estamos en un servidor (http/https)
-                if (window.location.protocol.startsWith('http')) {
-                    const fullUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + file;
-                    
-                    // El visor de Microsoft necesita la URL codificada
-                    iframe.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(fullUrl)}`;
-                    iframe.style.display = 'block';
-
-                    // Si el iframe no carga en 5 segundos, mostramos el aviso "En proceso"
-                    const timer = setTimeout(() => {
-                        // Aquí podrías verificar si el iframe cargó, 
-                        // pero por seguridad de cross-origin usualmente mostramos el aviso si no hay respuesta
-                    }, 5000);
-
-                } else {
-                    // Si estás en LOCAL (PC), mostramos el aviso directamente
-                    showProcessNotice();
-                }
+                // Comprobar existencia del archivo mediante Fetch
+                fetch(file, { method: 'HEAD' })
+                    .then(response => {
+                        loading.style.display = 'none';
+                        
+                        if (response.ok) {
+                            // Si el archivo existe en GitHub Pages, cargamos el visor de Office
+                            const absoluteUrl = new URL(file, window.location.href).href;
+                            iframe.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absoluteUrl)}`;
+                            iframe.style.display = 'block';
+                            downloadBtn.classList.remove('disabled');
+                        } else {
+                            // Si el archivo aún no existe (404)
+                            notice.style.display = 'flex';
+                            downloadBtn.classList.add('disabled');
+                        }
+                    })
+                    .catch(() => {
+                        // En caso de fallo o de probar localmente
+                        loading.style.display = 'none';
+                        notice.style.display = 'flex';
+                        downloadBtn.classList.add('disabled');
+                    });
             });
 
-            // Limpiar al cerrar para no gastar recursos
+            // Limpieza al cerrar el modal
             modalDoc.addEventListener('hidden.bs.modal', () => {
                 iframe.src = '';
             });
-        }
 
-        function showProcessNotice() {
-            iframe.style.display = 'none';
-            notice.style.display = 'flex';
-        }
-
-        // Lógica del Buscador
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput) {
-            searchInput.addEventListener('keyup', function() {
-                const query = this.value.toLowerCase();
-                const modules = document.querySelectorAll('.module-item');
-
-                modules.forEach(module => {
-                    const text = module.innerText.toLowerCase();
-                    module.style.display = text.includes(query) ? "block" : "none";
+            // Buscador en tiempo real de técnicas y documentos
+            document.getElementById('searchInput').addEventListener('keyup', function() {
+                const query = this.value.toLowerCase().trim();
+                document.querySelectorAll('.module-item').forEach(el => {
+                    const matches = el.innerText.toLowerCase().includes(query);
+                    el.style.display = matches ? 'block' : 'none';
                 });
             });
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
