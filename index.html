@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Técnicas de Investigación</title>
+    <title>Portal de Técnicas de Investigación - Física Química</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,21 +18,108 @@
         body {
             background-color: #f4f6f9;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* --------------------------------------------------
+           PANTALLA DE BIENVENIDA (SPLASH SCREEN)
+        -------------------------------------------------- */
+        #welcomeOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--brand-blue-dark) 0%, var(--brand-blue) 60%, #08101f 100%);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #welcomeOverlay.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .welcome-logo-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        .welcome-logo-icon {
+            font-size: 3.2rem;
+            color: #ffffff;
+            filter: drop-shadow(0 0 10px rgba(200, 42, 54, 0.8));
+        }
+
+        .welcome-badge {
+            background-color: var(--brand-red);
+            color: white;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(200, 42, 54, 0.4);
+        }
+
+        .welcome-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .welcome-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 600px;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(200, 42, 54, 0.3); }
+            100% { transform: scale(1.08); box-shadow: 0 0 30px rgba(200, 42, 54, 0.8); }
+        }
+
+        /* --------------------------------------------------
+           ESTILOS GENERALES Y NAVBAR
+        -------------------------------------------------- */
         .navbar-brand-style {
             background-color: var(--brand-blue);
             border-bottom: 4px solid var(--brand-red);
         }
 
-        /* Hero Banner */
         .hero-banner {
             background: linear-gradient(135deg, var(--brand-blue) 0%, #0d182e 100%);
             color: white;
             border-radius: 20px;
             padding: 30px;
             border-left: 8px solid var(--brand-red);
+        }
+
+        .info-header-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
         }
 
         /* Tarjetas de Técnica */
@@ -116,7 +203,6 @@
             overflow: hidden;
         }
 
-        /* Logos tenues en el fondo del modal */
         .watermark-logo {
             position: absolute;
             top: 50%;
@@ -128,15 +214,9 @@
             filter: grayscale(100%);
         }
 
-        .watermark-left {
-            left: 20px;
-        }
+        .watermark-left { left: 20px; }
+        .watermark-right { right: 20px; }
 
-        .watermark-right {
-            right: 20px;
-        }
-
-        /* Content container encima de las marcas de agua */
         .modal-iframe-container {
             position: relative;
             z-index: 2;
@@ -144,7 +224,6 @@
             height: 100%;
         }
 
-        /* Mensaje de documento en proceso o cargando */
         .doc-error-notice {
             display: none;
             position: absolute;
@@ -170,6 +249,18 @@
 </head>
 <body>
 
+    <!-- PANTALLA DE BIENVENIDA (SPLASH SCREEN) DE 2 SEGUNDOS -->
+    <div id="welcomeOverlay">
+        <div class="welcome-badge">Unidad Académica Avelino Siñani - Corpa</div>
+        <div class="welcome-logo-container">
+            <!-- Logo combinado de Física y Química -->
+            <i class="fa-solid fa-flask-vial welcome-logo-icon"></i>
+        </div>
+        <h1 class="welcome-title">¡BIENVENIDO AL PORTAL ESTUDIANTIL!</h1>
+        <p class="welcome-subtitle">ESPECIALIDAD: CIENCIAS NATURALES: FÍSICA - QUÍMICA</p>
+    </div>
+
+    <!-- NAVBAR PRINCIPAL -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-brand-style shadow-sm py-2">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center fw-bold" href="#">
@@ -181,21 +272,51 @@
 
     <div class="container my-4">
         
+        <!-- HERO BANNER REORGANIZADO CON INFORMACIÓN EN CABECERA -->
         <div class="hero-banner mb-4 shadow-sm">
-            <div class="row align-items-center">
-                <div class="col-md-7">
+            <div class="row align-items-center mb-3">
+                <div class="col-lg-6 mb-3 mb-lg-0">
                     <h2 class="fw-bold mb-1">Técnicas de Investigación</h2>
                     <p class="mb-0 text-white-50">Explora las 11 técnicas y selecciona el documento de trabajo correspondiente.</p>
                 </div>
-                <div class="col-md-5 mt-3 mt-md-0">
+                
+                <div class="col-lg-6">
+                    <div class="row g-2">
+                        <!-- LADO IZQUIERDO DE LA INFORMACIÓN -->
+                        <div class="col-sm-6">
+                            <div class="info-header-box h-100">
+                                <div class="text-white-50 small text-uppercase fw-bold" style="font-size:0.7rem; letter-spacing:0.5px;">Responsables</div>
+                                <div class="mt-1 small">
+                                    <div><strong class="text-white">DOCENTE:</strong> <span class="text-white-50">Msc. Consto R. Apaza Larico</span></div>
+                                    <div><strong class="text-white">WEBMASTER:</strong> <span class="text-white-50">Dilan Hersel Canaviri Nina</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- LADO DERECHO SOLICITADO -->
+                        <div class="col-sm-6">
+                            <div class="info-header-box h-100 border-start border-danger border-3">
+                                <div class="text-white fw-bold small"><i class="fa-solid fa-graduation-cap me-1 text-danger"></i> U.A. Avelino Siñani - Corpa</div>
+                                <div class="mt-1 text-white-50" style="font-size: 0.75rem; line-height: 1.2;">
+                                    <strong>ESPECIALIDAD:</strong> CIENCIAS NATURALES: FÍSICA - QUÍMICA
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BARRA DE BÚSQUEDA -->
+            <div class="row pt-2 border-top border-secondary border-opacity-25">
+                <div class="col-12">
                     <div class="input-group">
                         <span class="input-group-text bg-white border-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
-                        <input type="text" id="searchInput" class="form-control border-0 py-2" placeholder="Buscar técnica o documento...">
+                        <input type="text" id="searchInput" class="form-control border-0 py-2" placeholder="Buscar técnica o documento por nombre...">
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- REJILLA DE TÉCNICAS (CARDS) -->
         <div class="row g-4" id="modulesContainer">
             
             <div class="col-12 col-md-6 col-lg-4 module-item">
@@ -220,11 +341,11 @@
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Guia de Observación 2</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Mapa de Actores" data-file="archivos/tecnica1-doc4.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Mapa de Actores y Espacios" data-file="archivos/tecnica1-doc4.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Mapa de Actores y Espacios</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Mapa de Actores" data-file="archivos/tecnica1-doc5.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Registro Fotografico y audiovisual" data-file="archivos/tecnica1-doc5.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Registro Fotografico y audiovisual</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
@@ -376,7 +497,7 @@
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Guia de Grupo Focal</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Acta de Sesión de Grupo Focal" data-file="archivos/tecnica7-doc2.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Targetas de Metaplan" data-file="archivos/tecnica7-doc2.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Targetas de Metaplan</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
@@ -398,11 +519,11 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column gap-2 mt-auto">
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Recursoso pdc" data-file="archivos/tecnica8-doc1.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Mapa Parlante" data-file="archivos/tecnica8-doc1.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Mapa Parlante</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Recursos de Enseñanza" data-file="archivos/tecnica8-doc2.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Croquis de Actores" data-file="archivos/tecnica8-doc2.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Croquis de Actores</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
@@ -432,7 +553,7 @@
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Guia de Entrevista Semiestructurada</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Protocolo Eestructurado de Entrevista en Profundidad" data-file="archivos/tecnica9-doc3.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Ficha de Control de Entrevistas" data-file="archivos/tecnica9-doc3.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Ficha de Control de Entrevistas</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
@@ -480,7 +601,7 @@
                         </div>
                     </div>
                     <div class="d-flex flex-column gap-2 mt-auto">
-                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Herramienta Digital 1" data-file="archivos/tecnica11-doc1.docx">
+                        <button class="btn doc-btn" data-bs-toggle="modal" data-bs-target="#modalDoc" data-title="Herramienta Digital" data-file="archivos/tecnica11-doc1.docx">
                             <span><i class="fa-solid fa-file-word icon-doc me-2"></i>Herramienta Digital</span>
                             <i class="fa-solid fa-chevron-right small opacity-50"></i>
                         </button>
@@ -499,6 +620,7 @@
         </div>
     </div>
 
+    <!-- MODAL DE VISUALIZACIÓN DE DOCUMENTOS -->
     <div class="modal fade" id="modalDoc" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
@@ -543,70 +665,70 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. LÓGICA DE BIENVENIDA (SPLASH SCREEN DE 2 SEGUNDOS) ---
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        setTimeout(() => {
+            welcomeOverlay.classList.add('fade-out');
+        }, 2000);
+
+        // --- 2. LÓGICA DE MODALES DE DOCUMENTOS ---
         const modalDoc = document.getElementById('modalDoc');
+        const modalTitle = document.getElementById('modalTitle');
         const iframe = document.getElementById('docIframe');
         const notice = document.getElementById('docNotice');
         const loading = document.getElementById('docLoading');
         const downloadBtn = document.getElementById('downloadBtn');
+        const searchInput = document.getElementById('searchInput');
 
-        modalDoc.addEventListener('show.bs.modal', function(event) {
+        modalDoc.addEventListener('show.bs.modal', (event) => {
             const button = event.relatedTarget;
             const title = button.getAttribute('data-title');
             const file = button.getAttribute('data-file');
 
-            document.getElementById('modalTitle').textContent = `📄 ${title}`;
+            modalTitle.textContent = `📄 ${title}`;
             downloadBtn.setAttribute('href', file);
-            
-            // Ocultar iframe y aviso, mostrar pantalla de carga
-            iframe.style.display = 'none';
-            notice.style.display = 'none';
-            loading.style.display = 'flex';
-            iframe.src = '';
 
-            // Detectar si estamos en un servidor público (ej. GitHub Pages) o local
-            const isPublicServer = window.location.protocol.startsWith('http') && 
-                                   !window.location.hostname.includes('localhost') && 
-                                   !window.location.hostname.includes('127.0.0.1');
+            loading.style.display = 'flex';
+            notice.style.display = 'none';
+            iframe.src = '';
 
             fetch(file, { method: 'HEAD' })
                 .then(response => {
                     loading.style.display = 'none';
-                    
-                    if (response.ok && isPublicServer) {
-                        // Solo cargar iframe si el archivo existe Y estamos en un servidor web público
-                        const absoluteUrl = new URL(file, window.location.href).href;
-                        iframe.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absoluteUrl)}`;
-                        iframe.style.display = 'block';
-                        downloadBtn.classList.remove('disabled');
+                    if (response.ok) {
+                        const encodedUrl = encodeURIComponent(window.location.origin + '/' + file);
+                        iframe.src = `https://view.officeapps.live.com/op/embed.aspx?src=${encodedUrl}`;
                     } else {
-                        // Si el archivo no existe (404) o estás probando en localhost
                         notice.style.display = 'flex';
-                        downloadBtn.classList.add('disabled');
                     }
                 })
                 .catch(() => {
-                    // Si ocurre un error de red/fetch
                     loading.style.display = 'none';
                     notice.style.display = 'flex';
-                    downloadBtn.classList.add('disabled');
                 });
         });
 
-        // Limpieza al cerrar modal
         modalDoc.addEventListener('hidden.bs.modal', () => {
             iframe.src = '';
+            loading.style.display = 'none';
+            notice.style.display = 'none';
         });
 
-        // Buscador
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            const query = this.value.toLowerCase().trim();
-            document.querySelectorAll('.module-item').forEach(el => {
-                const matches = el.innerText.toLowerCase().includes(query);
-                el.style.display = matches ? 'block' : 'none';
+        // --- 3. FILTRO DE BÚSQUEDA ---
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.module-item');
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
             });
         });
     });
-</script>
     </script>
 </body>
 </html>
